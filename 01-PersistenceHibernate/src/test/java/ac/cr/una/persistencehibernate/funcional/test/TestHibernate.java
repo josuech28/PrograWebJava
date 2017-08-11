@@ -21,6 +21,7 @@ package ac.cr.una.persistencehibernate.funcional.test;
 import ac.cr.una.persistencehibernate.HibernateUtil;
 import ac.cr.una.persistencehibernate.model.Department;
 import ac.cr.una.persistencehibernate.model.Employee;
+import java.io.Serializable;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
@@ -75,5 +76,59 @@ public class TestHibernate {
         session.close();
         HibernateUtil.shutdown();
 
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testDelete() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+
+        //Create Department
+        Department department = new Department();
+        department.setId(1);
+
+        Serializable idDepartment = new Long(department.getId());
+        Object persistentInstanceDepartment = session.load(Department.class, idDepartment);
+        if (persistentInstanceDepartment != null) {
+            session.delete(persistentInstanceDepartment);
+        }
+
+        //Create Employee
+        Employee employee = new Employee();
+        employee.setId(1);
+
+        Serializable idEmployee = new Long(employee.getId());
+        Object persistentInstanceEmployee = session.load(Employee.class, idEmployee);
+        if (persistentInstanceEmployee != null) {
+            session.delete(persistentInstanceEmployee);
+        }
+
+    }
+
+    @Test
+    public void testGetById() {
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            Session session = sessionFactory.openSession();
+            
+            // department
+            Department department = new Department();
+            department =  (Department) session.get(Department.class, 1);
+            department.toString();
+            
+            // employee
+            Employee employee = new Employee();
+            employee =  (Employee) session.get(Employee.class, 1);
+            employee.toString();
+            
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

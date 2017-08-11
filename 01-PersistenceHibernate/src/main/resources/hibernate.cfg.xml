@@ -46,9 +46,9 @@ Contributor(s):
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.id.new_generator_mappings">true</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/01PHibernate</property>
-        <property name="hibernate.connection.username">01PHibernate</property>
-        <property name="hibernate.connection.password">1234$una</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/01phibernate</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
 
