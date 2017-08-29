@@ -107,6 +107,9 @@ public class TestHibernate {
         if (persistentInstanceEmployee != null) {
             session.delete(persistentInstanceEmployee);
         }
+        
+        session.close();
+        HibernateUtil.shutdown();
 
     }
 
@@ -125,6 +128,9 @@ public class TestHibernate {
             Employee employee = new Employee();
             employee =  (Employee) session.get(Employee.class, 1);
             employee.toString();
+            
+            session.close();
+            HibernateUtil.shutdown();
             
 
         } catch (Exception e) {
